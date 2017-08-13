@@ -31,6 +31,9 @@ sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate CriticalUpdate
 # Turn on app auto-update
 sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate AutoUpdate -bool TRUE
 
+# Turn the firewall on for specific applications/services
+sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
+
 # Set screen saver preferences (must be preferences of the current user)
 # Require password immediately after sleep or screen saver begins
 sudo -u $1 osascript -e 'do shell script "defaults write com.apple.screensaver askForPassword -int 1"'
