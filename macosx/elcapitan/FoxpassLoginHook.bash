@@ -39,5 +39,8 @@ sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
 sudo -u $1 osascript -e 'do shell script "defaults write com.apple.screensaver askForPassword -int 1"'
 sudo -u $1 osascript -e 'do shell script "defaults write com.apple.screensaver askForPasswordDelay -int 0"'
 
+# Prevent macOS from reading / writing .DS_Store files on SMB shares
+sudo -u $1 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
+
 # Auto-update ourselves
 curl --fail -o /tmp/FoxpassLoginHook.bash https://raw.githubusercontent.com/mes/foxpass-setup/master/macosx/elcapitan/FoxpassLoginHook.bash && sudo mv /tmp/FoxpassLoginHook.bash /Library/Management/FoxpassLoginHook.bash && sudo chmod a+x /Library/Management/FoxpassLoginHook.bash
